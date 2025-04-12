@@ -5,11 +5,10 @@ if (styleSwitcherToggle && styleSwitcher) {
     styleSwitcherToggle.addEventListener("click", () => {
         styleSwitcher.classList.toggle("open");
 
-        // Auto-close after 5 seconds (5000 ms)
         if (styleSwitcher.classList.contains("open")) {
             setTimeout(() => {
                 styleSwitcher.classList.remove("open");
-            }, 13525); // Adjust timing as needed
+            }, 13525); // ** Adjust timing as needed **
         }
     });
 }
@@ -18,7 +17,7 @@ if (styleSwitcherToggle && styleSwitcher) {
 const alternateStyles = document.querySelectorAll(".alternate-style");
 
 function setActiveStyle(color) {
-    document.cookie = `theme=${color}; path=/; max-age=31536000`; // Store for 1 year
+    document.cookie = `theme=${color}; path=/; max-age=31536000`; // ** Store for 1 year
     applyStyle(color);
 }
 
@@ -44,7 +43,6 @@ if (dayNight) {
         dayNight.querySelector("i").classList.toggle("fa-moon");
     });
 
-    // Apply dark mode and theme on page load
     window.addEventListener("load", () => {
         const savedTheme = getCookie("theme");
         if (savedTheme) applyStyle(savedTheme);
@@ -60,7 +58,7 @@ if (dayNight) {
 }
 
 // Function to Retrieve Cookie Value
-function getCookie(name) {
+function getCookie(name) { // ** Only stores the 'theme' since it's the only key set
     let match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
     return match ? match[2] : null;
 }
