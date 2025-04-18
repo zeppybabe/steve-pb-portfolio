@@ -34,19 +34,10 @@
 .style-switcher .s-icon i
 {
     line-height: 40px;
-
 }
 .style-switcher .style-switcher-toggler
 {
     top: 0;
-}
-.style-switcher-toggler.s-icon i 
-{
-    animation: spin 2s linear infinite;
-}
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
 }
 .style-switcher .day-night
 {

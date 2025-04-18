@@ -134,6 +134,7 @@ ul
 }
 .row
 {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     margin-left: -15px;
@@ -197,6 +198,7 @@ ul
 {
     font-family: 'Clicker Script', cursive;
     font-size: 40px;
+    text-shadow: 5px 2px 3px var(--skin-color) ;
 }
 .aside .logo a::before
 {
@@ -206,9 +208,11 @@ ul
     height: 20px;
     border-top: 5px solid var(--skin-color);
     border-right: 5px solid var(--skin-color);
-    bottom: 0;
     top: 0;
     right: 0;
+    border-radius: 10px;
+    border-right-style: outset;
+    margin-right: 5px;
 }
 .aside .logo a::after
 {
@@ -220,6 +224,8 @@ ul
     border-left: 5px solid var(--skin-color);
     bottom: 0;
     left: 0;
+    border-radius: 10px;
+    border-bottom-style: outset;
 }
 .aside .nav-toggler
 {
@@ -322,6 +328,7 @@ h3.hello
 {
     font-size: 28px;
     margin: 15px 0;
+    white-space: nowrap;
 }
 h3.hello span
 {
@@ -329,6 +336,23 @@ h3.hello span
     font-size: 30px;
     font-weight: 700;
     color: var(--skin-color);
+    display: inline-flex;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 4.5s steps(78) forwards;
+    animation-delay: 1.5s;
+}
+@keyframes typing 
+{
+    from 
+    {
+        width: 0;
+    }
+    to 
+    {
+        width: 100%;
+    } 
 }
 h3.my-profession
 {
@@ -351,6 +375,10 @@ h3.my-profession
     max-width: 40%;
     text-align: center;
     position: relative;
+    margin-left: auto;
+    background-size: cover;
+    background-position: relative;
+    border-radius: 8px;
 }
 .home-img::after
 {
@@ -362,6 +390,8 @@ h3.my-profession
     border-right: 10px solid var(--skin-color);
     right: 20px;
     bottom: -40px;
+    border-radius: 10px;
+    border-bottom-style: outset;
 }
 .home-img::before
 {
@@ -373,12 +403,41 @@ h3.my-profession
     border-left: 10px solid var(--skin-color);
     left: -20px;
     top: -40px;
+    border-radius: 10px;
+    border-left-style: inset;
+    margin-left: 39px;
 }
 .home .home-img img
 {
     margin: auto;
     border-radius: 5px;
     height: 400px;
+    z-index: 3;
+    border-radius: 8px;
+    transition: all 1.5s ease;
+}
+.home .home-img img:hover
+{
+    opacity: 0;
+}
+.home .home-img-b
+{
+    margin-left: 770px;
+    flex: 0 0 40%;
+    max-width: 40%;
+    position: absolute;
+    z-index: -1;
+}
+.home .home-img-b .image-back
+{
+    margin: auto;
+    background-size: cover;
+    border-radius: 5px;
+    height: 400px;
+    background: var(--skin-color);
+    object-fit: cover;
+    z-index: -1;
+    border-radius: 8px;
 }
 /** About **/
 .about .about-content
@@ -461,6 +520,12 @@ h3.my-profession
     width: 100%;
 }
 .about .about-content .row
+{
+    max-width: 100%;
+    width: 100%;
+    z-index: 0;
+}
+.about .about-content .education
 {
     width: 100%;
 }
@@ -638,10 +703,10 @@ summary::-webkit-details-marker
 }
 .portfolio .portfolio-item .portfolio-item-inner
 {
-    border: 6px solid var(--bg-black-100);
+    border: 6px inset var(--bg-black-100);
     border-radius: 10px;
     overflow: hidden;
-    cursor: pointer;
+    cursor:zoom-in;
 }
 .portfolio .portfolio-item-inner .portfolio-img img
 {
@@ -665,7 +730,8 @@ summary::-webkit-details-marker
     box-sizing: border-box;
     background-color: rgba(197, 189, 189, 0.911);
     overflow-y: auto;
-    transition: all 0.3s ease-out;
+    transition: all 1.3s ease-out;
+    cursor: zoom-out;
 }
 /** Contact **/
 .contact.section
@@ -745,6 +811,21 @@ summary::-webkit-details-marker
     {
         left: 270px;
     }
+    .home .home-img:hover img:hover
+    {
+        pointer-events: none;
+        transform: none;
+        opacity: 1;
+    }
+    .home .home-img-b
+    {
+        display: none;
+    }
+    .home-img::after,
+    .home-img::before
+    {
+        display: none;
+    }
 }
 @media (max-width:1199px)
 {
@@ -773,6 +854,14 @@ summary::-webkit-details-marker
     {
         left: 270px;
     }
+    .home .home-img img:hover
+    {
+        pointer-events: none;
+    }
+    .home .home-img-b
+    {
+        display: none;
+    }
 }
 @media (max-width:991px)
 {
@@ -788,7 +877,8 @@ summary::-webkit-details-marker
         flex: 0 0 100%;
         max-width: 100%;
     }
-    .home .home-img
+    .home .home-img,
+    .home .home-img-b
     {
         display: none;
     }

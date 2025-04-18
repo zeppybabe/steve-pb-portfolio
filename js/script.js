@@ -6,13 +6,6 @@ var typed = new Typed(".typing", {
     loop: true
 });
 
-var typedNames = new Typed(".names", {
-    strings: ["", "Steve Padilla-Benitez"],
-    typeSpeed: 125,
-    fadeOut: true,
-    cursorChar: ''
-});
-
 // Navigation
 const nav = document.querySelector(".nav");
 if (nav) {
